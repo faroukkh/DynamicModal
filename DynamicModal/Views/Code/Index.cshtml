@@ -1,0 +1,240 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewBag.Title = "Demo";
+}
+
+<div class="jumbotron bg-dark text-white">
+    <h1>Dynamic Modal Examples</h1>
+    <p class="lead">Try different examples of Dynamic Modal</p>
+</div>
+
+
+@*Simple Modal:*@
+
+<div class="row form-group">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <div class="row">
+                    <div class=" col-lg-9 card-title text-white">
+                        <h4>Display Details only</h4>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="card-link btn btn-sm btn-dark border-white float-right" id="btnSimpleDMCode">View Code <i class="fa fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Display full profile details in a dynamic modal.</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Position</th>
+                            <th>Try Me</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var emp in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @emp.FirstName
+                                </td>
+                                <td>
+                                    @emp.LastName
+                                </td>
+                                <td>
+                                    @emp.Position
+                                </td>
+                                <td>
+                                    <a class="btn btn-dark btnSimpleDM" data-empid="@emp.Id">View <i class="fa fa-eye"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Update Modal:*@
+
+<div class="row form-group">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <div class="row">
+                    <div class=" col-lg-9 card-title text-white">
+                        <h4>Edit Details and Partially Update</h4>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="card-link btn btn-sm btn-dark border-white float-right" id="btnEditEmpCode">View Code <i class="fa fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Display full profile details in a dynamic modal.</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Position</th>
+                            <th>Try Me</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var emp in Model)
+                        {
+                            <tr id="emprow_@emp.Id">
+                                @Html.Partial("_EmployeeRowWithEditBtn", emp)
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Show Detail with Edit Button*@
+
+
+<div class="row form-group">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <div class="row">
+                    <div class=" col-lg-9 card-title text-white">
+                        <h4>Display Details With Edit Button</h4>
+                          <h7c class="text-white-50">Double Modal</h7c>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="card-link btn btn-sm btn-dark border-white float-right" id="btnDoubleModalCode">View Code <i class="fa fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Display full profile details in a dynamic modal.</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Position</th>
+                            <th>Try Me</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var emp in Model)
+                        {
+                            <tr id="emprowedit_@emp.Id">
+                                @Html.Partial("_EmployeeRowWithViewEditBtn",emp)
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/dynamicModal")
+
+    <script type="text/javascript">
+        var dm = DynamicModal.init();
+        var dm2 = DynamicModal.init("second");
+
+        $(document).ready(() => {
+            InitViewCodeModal();
+            SimpleModal();
+            InitEditModal();
+            InitViewEditModal();
+
+
+        });
+
+        function InitViewCodeModal() {
+            $('#btnSimpleDMCode').unbind().click(() => {
+                var params = { name: "SimpleDM" };
+                dm.showDynamicModal("Simple Dynamic Modal Code", '@Url.Action("CodeViewer", "Code")', params, ModalSize.XLarge, null, true);
+            });
+            $('#btnEditEmpCode').unbind().click(() => {
+                var params = { name: "EditModal" };
+                dm.showDynamicModal("Partial Update Dynamic Modal Code", '@Url.Action("CodeViewer", "Code")', params, ModalSize.XLarge, null,true);
+            });
+            $('#btnDoubleModalCode').unbind().click(() => {
+                var params = { name: "DoubleModal" };
+                dm.showDynamicModal("Double Dynamic Modal Code", '@Url.Action("CodeViewer", "Code")', params, ModalSize.XLarge, null,true);
+            });
+        }
+
+
+
+
+        function SimpleModal() {
+            $('.btnSimpleDM').each(function () {
+                $(this).unbind().click(() => {
+                    var params = { id: $(this).data("empid") };
+                    dm.showDynamicModal("Simple Dynamic Modal", '@Url.Action("SimpleDMShowDetails","Code")', params, ModalSize.XLarge);
+                });
+            });
+        }
+
+        function InitEditModal() {
+            $('.btnEditEmp').each(function () {
+                 $(this).unbind().click(() => {
+                      var params = { id: $(this).data("empid") };
+                      dm.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal","Code")', params, ModalSize.XLarge, 'emprow_' + $(this).data("empid"), true, null, InitEditModal);
+                 });
+            });
+        }
+
+
+        function InitViewEditModal() {
+            $('.btnViewEditEmp').each(function () {
+                $(this).unbind().click(() => {
+                    var params = { id: $(this).data("empid") };
+                    dm.showDynamicModal("View Details With Edit Button", '@Url.Action("ShowDetailsWithEditButton", "Code")', params, ModalSize.XLarge,null,false,OnViewPageLoad);
+                });
+            });
+
+        }
+
+        function OnViewPageLoad() {
+            $('#btnEditEmployee').each(function () {
+                $(this).unbind().click(() => {
+                    var params = { id: $(this).data("empid") };
+                    dm2.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal2","Code")', params, ModalSize.Medium, 'emprowedit_' + $(this).data("empid"), true, null, function () { dm.hideModal(); InitViewEditModal();});
+                });
+            });
+        }
+
+
+        
+
+
+
+    </script>
+}
+
+
+
+
+

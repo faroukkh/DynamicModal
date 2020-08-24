@@ -1,0 +1,34 @@
+﻿@model Employee
+    <div class="p-5">
+        <div class="form-group row">
+            <div class="font-weight-bold col-lg-3 col-md-4 col-sm-12">Name:</div>
+            <div class="col-lg-9 col-md-8 col-sm-12 form-control">@Model.FirstName @Model.LastName</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row form-group">
+                    <div class="font-weight-bold col-lg-6 col-md-4  col-sm-12">State:</div>
+                    <div class="col-lg-6 col-md-8  col-sm-12 form-control">Pennsylvania</div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row form-group">
+                    <div class="font-weight-bold col-lg-4 col-md-4 col-sm-12">City:</div>
+                    <div class="col-lg-8 col-md-8  col-sm-12  form-control">Philadelphia</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="font-weight-bold col-lg-3 col-md-4 col-sm-12">Current Position:</div>
+            <div class="col-lg-9 col-md-8 col-sm-12 form-control">@Model.Position</div>
+        </div>
+        <div class="form-group row">
+            <div class="font-weight-bold col-lg-3 col-md-4 col-sm-12">Company:</div>
+            <div class="col-lg-9 col-md-8 col-sm-12 form-control">Holtec International</div>
+        </div>
+
+        <div class="form-group row">
+            <div class="font-weight-bold col-lg-3 col-md-4 col-sm-12">Email Address:</div>
+            <div class="col-lg-9 col-md-8 col-sm-12 form-control"><a href="mailto:Faroukkhabbaz@gmail.com">Faroukkhabbaz@gmail.com</a></div>
+        </div>
+    </div>

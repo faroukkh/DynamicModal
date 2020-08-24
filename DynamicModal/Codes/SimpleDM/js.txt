@@ -1,0 +1,13 @@
+﻿@Scripts.Render("~/bundles/dynamicModal")
+
+<script type="text/javascript">
+    var dm = DynamicModal.init();
+       $(document).ready(() => {
+            $('.btnSimpleDM').each(function() {
+                $(this).unbind().click(() => {
+                    var params = { id: $(this).data(""empid"") };
+                    dm.showDynamicModal(""Simple Dynamic Modal"", '@Url.Action(""SimpleDMShowDetails"",""Codes"")', params, ModalSize.XLarge);
+                });
+            });
+       });    
+</script>

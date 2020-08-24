@@ -1,0 +1,33 @@
+﻿@Scripts.Render("~/bundles/dynamicModal")
+
+<script type="text/javascript">
+    var dm = DynamicModal.init();
+    var dm2 = DynamicModal.init("Second");
+
+    $(document).ready(() => {
+        InitViewEditModal();
+    });
+    
+
+    function InitViewEditModal() {
+        $('.btnViewEditEmp').each(function () {
+            $(this).unbind().click(() => {
+                var params = { id: $(this).data("empid") };
+                dm.showDynamicModal("View Details With Edit Button", '@Url.Action("ShowDetailsWithEditButton", "Code")', params, ModalSize.XLarge,null,false,OnViewPageLoad);
+            });
+        });
+
+    }
+
+    function OnViewPageLoad() {
+        $('#btnEditEmployee').each(function () {
+            $(this).unbind().click(() => {
+                var params = { id: $(this).data("empid") };
+                dm2.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal2","Code")', params, ModalSize.Medium, 'emprowedit_' + $(this).data("empid"), true, null, function () { dm.hideModal(); InitViewEditModal();});
+            });
+        });
+    }
+
+
+      
+</script>

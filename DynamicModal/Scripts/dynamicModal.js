@@ -283,7 +283,7 @@ class DynamicAlert {
     static init() {
 
         if ($('#DynamicAlerts').length == 0) {
-            $('body').prepend('<div id="DynamicAlerts" class="container-fluid stickytop"></div>');
+            $('body').prepend('<div id="DynamicAlerts" class="container-fluid" style="position: -webkit-sticky; position: fixed !important; top: 0px; z-index: 100000000000;"></div>');
         }
         return new DynamicAlert();
     }

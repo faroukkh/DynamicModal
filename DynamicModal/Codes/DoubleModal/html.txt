@@ -1,0 +1,62 @@
+﻿<div class="row form-group">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <div class="row">
+                    <div class=" col-lg-9 card-title text-white">
+                        <h4>Display Details With Edit Button</h4>
+                          <h7c class="text-white-50">Double Modal</h7c>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="card-link btn btn-sm btn-dark border-white float-right" id="btnSimpleDMCode">View Code <i class="fa fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Display full profile details in a dynamic modal.</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Position</th>
+                            <th>Try Me</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var emp in Model)
+                        {
+                            <tr id="emprowedit_@emp.Id">
+                                @Html.Partial("_EmployeeRowWithViewEditBtn",emp)
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+Partial View: _EmployeeRowWithViewEditBtn
+-----------------------------------------
+
+@model Employee
+<td>
+    @Model.FirstName
+</td>
+<td>
+    @Model.LastName
+</td>
+<td>
+    @Model.Position
+</td>
+<td>
+    <a class="btn btn-dark btnViewEditEmp" data-empid="@Model.Id">View/Edit <i class="fa fa-edit"></i></a>
+</td>
+
+
+
+

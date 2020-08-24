@@ -26,5 +26,11 @@ namespace DynamicModal.Controllers
 
             return View();
         }
+
+        public ActionResult DeveloperInfo()
+        {
+            return PartialView();
+        }
+
     }
 }

@@ -1,0 +1,15 @@
+﻿[HttpGet]
+public ActionResult EditModal(int id)
+{
+    var employee = Helper.Employees().Where(x => x.Id == id).FirstOrDefault();
+    return PartialView(employee);
+}
+
+[HttpPost]
+public ActionResult EditModal(Employee employee)
+{
+    Helper.UpdateEmployee(employee);
+
+    return DM.DMSuccessPartialView(this, "_EmployeeRowWithViewEditBtn", employee, "Record has been updated Successfully!");
+
+}

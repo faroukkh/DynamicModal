@@ -1,0 +1,1 @@
+﻿<a class="btn btn-dark btnEditEmp" data-empid="@Model.Id">Edit <i class="fa fa-edit"></i></a>

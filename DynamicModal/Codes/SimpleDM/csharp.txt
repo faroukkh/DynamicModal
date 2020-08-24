@@ -1,0 +1,6 @@
+﻿[HttpGet]
+public ActionResult SimpleDMShowDetails(int id)
+{
+    var employee = Helper.Employees().Where(x => x.Id == id).FirstOrDefault();
+    return PartialView("_SimpleDMShowDetails", employee);
+}

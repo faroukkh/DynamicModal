@@ -2,30 +2,79 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
+<div class="jumbotron bg-dark text-white">
+    <h1>Dynamic Modal</h1>
+    <p class="lead">Dynamic Modal is a free package for generating Bootstrap modals dynamically! using HTML, CSS and JavaScript.</p>
 </div>
 
-<div class="row">
+
+<div class="row ">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h2 class="card-title">
+                    What is a Modal?
+                </h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    A Modal is a pop-up window built with HTML, CSS classes, and JavaScript using Bootstrap framework. The Modals are positioned over everything else in the document and remove scroll from the body
+                    so that the modal content will scrolls instead.
+                </p>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h2>
+                    Where & why do we use Modal?
+                </h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    We use Modal whenever there is no enough space on the page to show additional information or to updated partial info &
+                    provide a better user experience to the user in addition to the load performance!
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div class="col-md-4 pb-auto">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h2>
+                    Is it easy to use Modals?
+                </h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    Using Modals is easy, but it's not considered fast development as you have to write your own JavaScript for you Ajax calls to load forms dynamically and to submit the forms.
+                </p>
+            </div>
+        </div>
     </div>
+
 </div>
+
+@*@section Scripts {
+
+    @Scripts.Render("~/bundles/dynamicModal")
+
+    <script type="text/javascript">
+
+            var dm = DynamicModal.init();
+            $(document).ready(() => {
+
+
+                $('#btnDynamicModal').unbind().click(() => {
+                    dm.showDynamicModal("Test of Dynamic Modal!",'@Url.Action("DeveloperInfo", "Home")',null,ModalSize.Large,null,true);
+                });
+
+            });
+
+    </script>
+
+
+}*@

@@ -1,0 +1,99 @@
+﻿@model DynamicModal.ViewModels.CodeViewerVM
+@{
+    var HTMLCODE = ViewBag.HTMLCODE;
+    var JSCODE = ViewBag.JSCODE;
+    var SERVERCODE = ViewBag.SERVERCODE;
+}
+
+
+<script src="~/Scripts/codemirror-5.56.0/lib/codemirror.js"></script>
+<link href="~/Scripts/codemirror-5.56.0/lib/codemirror.css" rel="stylesheet" />
+
+ 
+<link href="~/Scripts/codemirror-5.56.0/theme/midnight.css" rel="stylesheet" />
+<link href="~/Scripts/codemirror-5.56.0/theme/night.css" rel="stylesheet" />
+<link href="~/Scripts/codemirror-5.56.0/theme/mdn-like.css" rel="stylesheet" />
+
+<script src="~/Scripts/codemirror-5.56.0/addon/display/autorefresh.js"></script>
+<script src="~/Scripts/codemirror-5.56.0/addon/edit/matchtags.js"></script>
+<script src="~/Scripts/codemirror-5.56.0/addon/edit/matchbrackets.js"></script>
+<script src="~/Scripts/codemirror-5.56.0/addon/fold/xml-fold.js"></script>
+
+
+<script src="~/Scripts/codemirror-5.56.0/mode/clike/clike.js"></script>
+<script src="~/Scripts/codemirror-5.56.0/mode/javascript/javascript.js"></script>
+<script src="~/Scripts/codemirror-5.56.0/mode/xml/xml.js"></script>
+ 
+
+<div class="card mb-1">
+    <div class="card-header bg-dark">
+        <h3 class="text-white">HTML</h3>
+    </div>
+    <div class="card-body ">
+        <div id="htmlSection">
+            @Html.TextAreaFor(x => x.HTMLCode)
+        </div>
+    </div>
+</div>
+
+<div class="card mb-1">
+    <div class="card-header bg-dark">
+        <h3 class="text-white">JavaScript</h3>
+    </div>
+    <div class="card-body">
+        <div id="JSSection">
+            @Html.TextAreaFor(x => x.JSCode)
+        </div>
+    </div>
+</div>
+
+<div class="card mb-1">
+    <div class="card-header bg-dark">
+        <h3 class="text-white">Server Side </h3>
+    </div>
+    <div class="card-body">
+        <div id="csharpSection">
+            @Html.TextAreaFor(x => x.CSharpCode)
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(() => {
+
+        var myCodeMirrorcs = CodeMirror.fromTextArea(document.getElementById("CSharpCode"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            readOnly: true,
+            autoRefresh: true,
+            mode: "javascript",
+            theme: "midnight",
+        });
+
+ 
+
+        var myCodeMirrorjs = CodeMirror.fromTextArea(document.getElementById("JSCode"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            autoRefresh:true,
+            readOnly: true,
+            mode: "javascript",
+            theme: "midnight",
+        });
+
+        var myCodeMirrorhtml = CodeMirror.fromTextArea(document.getElementById("HTMLCode"), {
+            lineNumbers: true,
+            readOnly: true,
+            autoRefresh: true,    
+            mode: "text/html",
+            //matchTags: { bothTags: true },                  
+            theme: "night",
+        });
+
+    });
+
+
+
+
+</script>

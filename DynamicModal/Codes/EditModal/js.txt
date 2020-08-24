@@ -1,0 +1,18 @@
+﻿@Scripts.Render("~/bundles/dynamicModal")
+
+<script type="text/javascript">
+    var dm = DynamicModal.init();
+        $(document).ready(() => {
+        InitEditModal();
+    });
+    
+    function InitEditModal() {
+           $('.btnEditEmp').each(function () {
+               $(this).unbind().click(() => {
+                   var params = { id: $(this).data("empid") };
+                   dm.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal","Codes")', params, ModalSize.XLarge, 'emprow_' + $(this).data("empid"), true, null, InitEditModal);
+               });
+           });
+    
+    }
+</script>
