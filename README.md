@@ -36,7 +36,6 @@ It is a JavaScript library with a back-end class that defines the return structu
   
 # Demo 
 You can check the link below for demo and code viewing
-
 https://dynamicmodal.com/Code
 
 
