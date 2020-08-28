@@ -32,3 +32,11 @@ It is a JavaScript library with a back-end class that defines the return structu
   -Onload and After Submit Callback functions.\
   -Different Modal size selected as a parameter.\
   -Have a pop up on top of another popup.
+  
+  
+# Demo 
+You can check the link below for demo and code viewing
+
+https://dynamicmodal.com/Code
+
+
