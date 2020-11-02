@@ -201,7 +201,7 @@
             $('.btnEditEmp').each(function () {
                  $(this).unbind().click(() => {
                       var params = { id: $(this).data("empid") };
-                      dm.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal","Code")', params, ModalSize.XLarge, 'emprow_' + $(this).data("empid"), true, null, InitEditModal);
+                      dm.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal","Code")', params, ModalSize.XLarge, 'emprow_' + $(this).data("empid"), true, null, InitEditModal,true);
                  });
             });
         }
@@ -221,7 +221,7 @@
             $('#btnEditEmployee').each(function () {
                 $(this).unbind().click(() => {
                     var params = { id: $(this).data("empid") };
-                    dm2.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal2","Code")', params, ModalSize.Medium, 'emprowedit_' + $(this).data("empid"), true, null, function () { dm.hideModal(); InitViewEditModal();});
+                    dm2.showDynamicModal("Partial Update Dynamic Modal", '@Url.Action("EditModal2","Code")', params, ModalSize.Medium, 'emprowedit_' + $(this).data("empid"), true, null, function () { dm.hideModal(); InitViewEditModal(); }, true);
                 });
             });
         }

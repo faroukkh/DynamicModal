@@ -76,17 +76,15 @@ namespace DynamicModal
             };
             return json;
         }
-        //public static ActionResult DMRedirect(string method = "Index", string controller = "Home")
-        //{
-        //    Url
-        //    var url = string.Format("/{0}/{1}", controller, method);
-        //    JsonResult json = new JsonResult()
-        //    {
-        //        Data = new HttpStatusCodeResult(HttpStatusCode.Redirect, ),
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        //    };
-        //    return json;
-        //}
+        public static ActionResult DMRedirect(string url)
+        {
+            JsonResult json = new JsonResult()
+            {
+                Data = new DMResult(HttpStatusCode.Redirect, url),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            };
+            return json;
+        }
 
     }
     public static class DA
@@ -97,6 +95,15 @@ namespace DynamicModal
             JsonResult json = new JsonResult()
             {
                 Data = new DMResult(HttpStatusCode.OK, message),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            };
+            return json;
+        }
+        public static ActionResult DARedirect(string url)
+        {
+            JsonResult json = new JsonResult()
+            {
+                Data = new DMResult(HttpStatusCode.Redirect, url),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
             };
             return json;
